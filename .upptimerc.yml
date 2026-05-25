@@ -29,9 +29,9 @@ sites:
     url: https://join.thallim.com/
 
 status-website:
-  # First build serves at the default Pages URL (https://andrewcho-dev.github.io/thallim-status).
-  # Swap to a custom domain later by replacing baseUrl with:  cname: status.thallim.com
-  baseUrl: /thallim-status
+  # Custom domain — Upptime writes a CNAME file into gh-pages so GitHub Pages serves
+  # the site at the apex of this host. DNS: status.thallim.com CNAME andrewcho-dev.github.io.
+  cname: status.thallim.com
   name: Thallim Pulse Status
   introTitle: "**Thallim Pulse** — System Status"
   introMessage: Live availability of the Thallim Pulse IoT platform, monitored from outside the production cluster.
