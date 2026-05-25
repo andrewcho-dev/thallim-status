@@ -1,31 +1,45 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+# Thallim Pulse — public status page (Upptime)
+#
+# Uptime checks run from GitHub Actions (external vantage, like a real customer),
+# commit results to this repo's history/, and publish a status site with DAILY
+# uptime history (Atlassian-style bars) + 1/7/30/365-day uptime to GitHub Pages.
+# Docs: https://upptime.js.org/docs/configuration
+
+owner: andrewcho-dev
+repo: thallim-status
 
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Test Broken Site
-    url: https://thissitedoesnotexist.koj.co
+  - name: Web App & Dashboard
+    url: https://pulse.thallim.com/
+  - name: API
+    url: https://pulse.thallim.com/healthz
+  - name: Provisioning API
+    url: https://api.thallim.com/health
+  - name: Secure MQTT (mqtts 8883)
+    check: tcp-ping
+    url: mqtt.thallim.com
+    port: 8883
+  - name: MQTT (plain 1883)
+    check: tcp-ping
+    url: mqtt.thallim.com
+    port: 1883
+  - name: Identity Provider (OIDC)
+    url: https://auth.thallim.com/.well-known/openid-configuration
+  - name: Signup
+    url: https://join.thallim.com/
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  # First build serves at the default Pages URL (https://andrewcho-dev.github.io/thallim-status).
+  # Swap to a custom domain later by replacing baseUrl with:  cname: status.thallim.com
+  baseUrl: /thallim-status
+  name: Thallim Pulse Status
+  introTitle: "**Thallim Pulse** — System Status"
+  introMessage: Live availability of the Thallim Pulse IoT platform, monitored from outside the production cluster.
+  logoUrl: https://raw.githubusercontent.com/andrewcho-dev/thallim-status/master/assets/logo.svg
+  faviconSvg: https://raw.githubusercontent.com/andrewcho-dev/thallim-status/master/assets/logo.svg
+  theme: light
   navbar:
     - title: Status
       href: /
-    - title: GitHub
-      href: https://github.com/$OWNER/$REPO
-
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+    - title: Platform
+      href: https://pulse.thallim.com
